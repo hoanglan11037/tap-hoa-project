@@ -1,0 +1,866 @@
+/* ==========================================================
+   Hoàng Đinh — giao diện. Tông "chợ tươi": xanh lá + kem, thanh điều hướng ngang.
+   Chỉ dùng tên token, không viết mã màu trực tiếp trong các class bên dưới
+   (trừ dải màu nhấn tone-* và hình nền đăng nhập).
+   ========================================================== */
+.root {
+    -t-bg: #F4F7F2;
+    -t-surface: #FFFFFF;
+    -t-surface-2: #F8FAF6;
+    -t-header: #FFFFFF;
+    -t-ink: #14261C;
+    -t-ink-2: #3B4A40;
+    -t-muted: #6A7A70;
+    -t-line: #E3EAE2;
+    -t-line-2: #EEF2EC;
+    -t-brand: #16803C;
+    -t-brand-hover: #116A31;
+    -t-brand-deep: #0D4F25;
+    -t-brand-soft: #E3F4E8;
+    -t-brand-soft-2: #F0F9F2;
+    -t-sun: #F59E0B;
+    -t-sun-soft: #FEF3C7;
+    -t-sun-ink: #92400E;
+    -t-red: #C2362B;
+    -t-red-soft: #FDE8E6;
+    -t-red-ink: #9B231A;
+    -t-blue: #2563EB;
+    -t-blue-soft: #E0EAFF;
+    -t-violet: #7C3AED;
+    -t-violet-soft: #EDE5FF;
+    -t-gray-soft: #EEF0EE;
+    -t-gray-ink: #5B655F;
+
+    /* đồng bộ màu AtlantaFX (focus ring, dòng đang chọn, checkbox…) */
+    -color-accent-fg: #16803C;
+    -color-accent-emphasis: #16803C;
+    -color-accent-muted: #9FD6B0;
+    -color-accent-subtle: #E3F4E8;
+    -color-border-default: #D9E2D8;
+    -color-border-muted: #E3EAE2;
+    -color-fg-default: #14261C;
+    -color-fg-muted: #6A7A70;
+    -color-bg-default: #FFFFFF;
+    -color-bg-subtle: #F8FAF6;
+    -color-danger-fg: #9B231A;
+    -color-danger-emphasis: #C2362B;
+
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-background-color: -t-bg;
+}
+
+.muted { -fx-text-fill: -t-muted; }
+.text-green { -fx-text-fill: -t-brand; }
+.text-red { -fx-text-fill: -t-red; }
+.money { -fx-font-family: "Segoe UI Semibold"; -fx-text-fill: -t-ink; }
+.code {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 13px;
+    -fx-text-fill: -t-brand-deep;
+    -fx-background-color: -t-brand-soft-2;
+    -fx-background-radius: 4;
+    -fx-padding: 1 6 1 6;
+}
+
+/* ---------- Thanh trên cùng ---------- */
+.header {
+    -fx-background-color: -t-header;
+    -fx-border-color: transparent transparent -t-line transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, rgba(20, 38, 28, 0.06), 10, 0, 0, 2);
+}
+
+.topbar {
+    -fx-padding: 12 24 8 24;
+    -fx-spacing: 12;
+    -fx-alignment: center-left;
+}
+
+.logo {
+    -fx-background-color: linear-gradient(to bottom right, #22A04E, #0D4F25);
+    -fx-background-radius: 12;
+    -fx-min-width: 40; -fx-min-height: 40; -fx-max-width: 40; -fx-max-height: 40;
+}
+.logo .ikonli-font-icon { -fx-icon-color: white; -fx-icon-size: 22; }
+.logo-lg { -fx-min-width: 52; -fx-min-height: 52; -fx-max-width: 52; -fx-max-height: 52; -fx-background-radius: 16; }
+.logo-lg .ikonli-font-icon { -fx-icon-size: 28; }
+
+.brand-name { -fx-font-family: "Segoe UI Black"; -fx-font-size: 18px; -fx-text-fill: -t-brand-deep; }
+.brand-tagline { -fx-font-size: 12px; -fx-text-fill: -t-muted; }
+
+.clock {
+    -fx-text-fill: -t-ink-2;
+    -fx-font-size: 13px;
+    -fx-graphic-text-gap: 6;
+    -fx-padding: 0 8 0 0;
+}
+.clock .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 16; }
+
+.btn-sell {
+    -fx-background-color: -t-sun;
+    -fx-background-radius: 999;
+    -fx-text-fill: #3B2300;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 8 18 8 14;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 8;
+}
+.btn-sell .ikonli-font-icon { -fx-icon-color: #3B2300; -fx-icon-size: 18; }
+.btn-sell:hover { -fx-background-color: #E08E06; }
+
+.user-chip {
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-padding: 4 6 4 4;
+    -fx-background-color: -t-surface-2;
+    -fx-background-radius: 999;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 999;
+}
+.avatar {
+    -fx-background-color: -t-brand;
+    -fx-background-radius: 999;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-min-width: 34; -fx-min-height: 34; -fx-max-width: 34; -fx-max-height: 34;
+}
+.user-menu {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: -t-ink;
+}
+.user-menu > .label { -fx-padding: 0 4 0 0; }
+.user-role { -fx-font-size: 11px; -fx-text-fill: -t-muted; }
+
+/* Dải tab: chữ + biểu tượng, gạch chân xanh khi đang chọn */
+.tabbar {
+    -fx-padding: 0 18 0 18;
+    -fx-spacing: 2;
+    -fx-alignment: bottom-left;
+}
+.tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 3 0;
+    -fx-padding: 10 12 9 12;
+    -fx-text-fill: -t-muted;
+    -fx-graphic-text-gap: 7;
+    -fx-cursor: hand;
+}
+.tab .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 18; }
+.tab:hover { -fx-text-fill: -t-ink; -fx-background-color: -t-surface-2; }
+.tab:hover .ikonli-font-icon { -fx-icon-color: -t-ink; }
+.tab:selected {
+    -fx-text-fill: -t-brand;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-border-color: transparent transparent -t-brand transparent;
+}
+.tab:selected .ikonli-font-icon { -fx-icon-color: -t-brand; }
+
+/* ---------- Trang ---------- */
+.content { -fx-background-color: -t-bg; }
+
+.page {
+    -fx-padding: 22 26 22 26;
+    -fx-spacing: 16;
+    -fx-background-color: -t-bg;
+}
+.page-scroll, .page-scroll > .viewport { -fx-background-color: transparent; -fx-background: -t-bg; -fx-padding: 0; }
+.page-scroll { -fx-border-width: 0; }
+
+.page-head { -fx-alignment: center-left; -fx-spacing: 10; }
+.eyebrow {
+    -fx-font-size: 11px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: -t-brand;
+}
+.page-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 24px; -fx-text-fill: -t-ink; }
+.page-count {
+    -fx-background-color: -t-brand-soft;
+    -fx-background-radius: 999;
+    -fx-text-fill: -t-brand-deep;
+    -fx-font-size: 12px;
+    -fx-padding: 2 10 2 10;
+}
+
+/* Lời chào ở Tổng quan */
+.hero {
+    -fx-background-color: linear-gradient(to right, #0D4F25, #16803C 60%, #2BA35A);
+    -fx-background-radius: 18;
+    -fx-padding: 22 26 22 26;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+.hero-title { -fx-text-fill: white; -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 22px; }
+.hero-sub { -fx-text-fill: rgba(255, 255, 255, 0.82); }
+.btn-light {
+    -fx-background-color: white;
+    -fx-text-fill: -t-brand-deep;
+    -fx-background-radius: 999;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 9 18 9 14;
+    -fx-cursor: hand;
+}
+.btn-light .ikonli-font-icon { -fx-icon-color: -t-brand-deep; -fx-icon-size: 18; }
+.btn-ghost-light {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-border-color: rgba(255, 255, 255, 0.45);
+    -fx-border-radius: 999;
+    -fx-background-radius: 999;
+    -fx-text-fill: white;
+    -fx-padding: 8 16 8 12;
+    -fx-cursor: hand;
+}
+.btn-ghost-light .ikonli-font-icon { -fx-icon-color: white; -fx-icon-size: 18; }
+.btn-ghost-light:hover { -fx-background-color: rgba(255, 255, 255, 0.22); }
+
+/* Ô chỉ số */
+.stat {
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 16;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 16;
+    -fx-padding: 16 18 16 16;
+    -fx-spacing: 14;
+    -fx-alignment: center-left;
+    -fx-max-width: infinity;
+}
+.stat-icon {
+    -fx-background-radius: 12;
+    -fx-min-width: 46; -fx-min-height: 46; -fx-max-width: 46; -fx-max-height: 46;
+}
+.stat-icon .ikonli-font-icon { -fx-icon-size: 24; }
+.tone-green { -fx-background-color: #E3F4E8; } .tone-green .ikonli-font-icon { -fx-icon-color: #16803C; }
+.tone-blue { -fx-background-color: #E0EAFF; } .tone-blue .ikonli-font-icon { -fx-icon-color: #2563EB; }
+.tone-violet { -fx-background-color: #EDE5FF; } .tone-violet .ikonli-font-icon { -fx-icon-color: #7C3AED; }
+.tone-amber { -fx-background-color: #FEF3C7; } .tone-amber .ikonli-font-icon { -fx-icon-color: #B45309; }
+.tone-rose { -fx-background-color: #FDE4EC; } .tone-rose .ikonli-font-icon { -fx-icon-color: #BE185D; }
+.tone-teal { -fx-background-color: #D5F5F0; } .tone-teal .ikonli-font-icon { -fx-icon-color: #0F766E; }
+.stat-label { -fx-text-fill: -t-muted; -fx-font-size: 13px; }
+.stat-value { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 24px; -fx-text-fill: -t-ink; }
+.stat-note { -fx-text-fill: -t-muted; -fx-font-size: 12px; }
+.stat-note.up { -fx-text-fill: -t-brand; -fx-font-family: "Segoe UI Semibold"; }
+.stat-note.down { -fx-text-fill: -t-red; -fx-font-family: "Segoe UI Semibold"; }
+
+/* Khung nội dung */
+.panel, .side-panel {
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 16;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 16;
+    -fx-padding: 16 18 16 18;
+    -fx-spacing: 12;
+}
+.panel-head { -fx-alignment: center-left; -fx-spacing: 12; }
+.panel-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 15px; -fx-text-fill: -t-ink; }
+.panel-meta { -fx-text-fill: -t-muted; -fx-font-size: 12px; }
+.panel-actions { -fx-spacing: 8; -fx-alignment: center-left; -fx-padding: 12 0 0 0; }
+
+.link, .link-danger {
+    -fx-background-color: transparent;
+    -fx-padding: 2 4 2 4;
+    -fx-text-fill: -t-brand;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-cursor: hand;
+}
+.link:hover { -fx-underline: true; }
+.link-danger { -fx-text-fill: -t-red; }
+.link-danger:hover { -fx-underline: true; }
+
+.list-row {
+    -fx-spacing: 12;
+    -fx-alignment: center-left;
+    -fx-padding: 9 4 9 4;
+    -fx-border-color: transparent transparent -t-line-2 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.qty-chip {
+    -fx-min-width: 40; -fx-pref-width: 40;
+    -fx-alignment: center;
+    -fx-background-radius: 10;
+    -fx-padding: 6 0 6 0;
+    -fx-font-family: "Segoe UI Semibold";
+}
+.qty-low { -fx-background-color: -t-sun-soft; -fx-text-fill: -t-sun-ink; }
+.qty-out { -fx-background-color: -t-red-soft; -fx-text-fill: -t-red-ink; }
+.rank {
+    -fx-min-width: 28; -fx-min-height: 28; -fx-max-width: 28; -fx-max-height: 28;
+    -fx-alignment: center;
+    -fx-background-color: -t-brand-soft;
+    -fx-background-radius: 999;
+    -fx-text-fill: -t-brand-deep;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 12px;
+}
+.fire { -fx-icon-color: #EA580C; -fx-icon-size: 20; }
+.empty-line { -fx-padding: 14 4 14 4; }
+
+.empty-state { -fx-alignment: center; -fx-spacing: 6; }
+.empty-state .ikonli-font-icon { -fx-icon-size: 46; -fx-icon-color: #C5D3C8; }
+.empty-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 15px; -fx-text-fill: -t-ink-2; }
+
+.info-banner {
+    -fx-background-color: -t-brand-soft-2;
+    -fx-border-color: -t-brand-soft;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 12 14 12 14;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+.info-banner .ikonli-font-icon { -fx-icon-color: -t-brand; -fx-icon-size: 20; }
+.info-banner .label { -fx-text-fill: -t-ink-2; }
+
+/* ---------- Nút ---------- */
+.btn-primary, .btn-outline, .btn-danger, .btn-danger-outline {
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-graphic-text-gap: 7;
+}
+.btn-primary { -fx-background-color: -t-brand; -fx-text-fill: white; }
+.btn-primary .ikonli-font-icon { -fx-icon-color: white; -fx-icon-size: 17; }
+.btn-primary:hover { -fx-background-color: -t-brand-hover; }
+.btn-primary:disabled { -fx-opacity: 0.5; }
+.btn-outline {
+    -fx-background-color: -t-surface;
+    -fx-border-color: #C9D8CC;
+    -fx-text-fill: -t-brand-deep;
+}
+.btn-outline .ikonli-font-icon { -fx-icon-color: -t-brand-deep; -fx-icon-size: 17; }
+.btn-outline:hover { -fx-background-color: -t-brand-soft-2; -fx-border-color: -t-brand; }
+.btn-danger { -fx-background-color: -t-red; -fx-text-fill: white; }
+.btn-danger:hover { -fx-background-color: -t-red-ink; }
+.btn-danger-outline { -fx-background-color: transparent; -fx-border-color: #F0B8B2; -fx-text-fill: -t-red; }
+.btn-danger-outline .ikonli-font-icon { -fx-icon-color: -t-red; -fx-icon-size: 16; }
+.btn-danger-outline:hover { -fx-background-color: -t-red-soft; }
+.btn-small { -fx-padding: 4 12 4 12; -fx-font-size: 12px; }
+.btn-block { -fx-max-width: infinity; -fx-padding: 11 18 11 18; -fx-font-size: 15px; }
+
+.icon-btn {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-padding: 6;
+    -fx-cursor: hand;
+}
+.icon-btn .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 18; }
+.icon-btn:hover { -fx-background-color: -t-brand-soft-2; }
+.icon-btn:hover .ikonli-font-icon { -fx-icon-color: -t-brand; }
+.remove:hover .ikonli-font-icon { -fx-icon-color: -t-red; }
+
+/* ---------- Form ---------- */
+.text-field, .password-field, .text-area, .combo-box, .date-picker {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.text-field, .password-field { -fx-padding: 8 10 8 10; }
+.field-label { -fx-font-size: 12px; -fx-font-family: "Segoe UI Semibold"; -fx-text-fill: -t-ink-2; }
+.field-error { -fx-text-fill: -t-red; -fx-font-size: 12px; }
+.hint { -fx-text-fill: -t-brand; -fx-font-size: 12px; }
+.alert-error {
+    -fx-background-color: -t-red-soft;
+    -fx-text-fill: -t-red-ink;
+    -fx-background-radius: 10;
+    -fx-padding: 9 12 9 12;
+}
+
+.filter-bar { -fx-spacing: 12; -fx-alignment: center-left; }
+.search {
+    -fx-background-color: -t-surface;
+    -fx-border-color: -color-border-default;
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
+    -fx-padding: 0 6 0 14;
+    -fx-spacing: 6;
+    -fx-alignment: center-left;
+}
+.search .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 18; }
+.search .text-field { -fx-background-color: transparent; -fx-border-width: 0; -fx-background-insets: 0; -fx-padding: 8 6 8 2; }
+
+/* Nhóm nút dạng "segmented" */
+.segmented {
+    -fx-background-color: #E8EEE7;
+    -fx-background-radius: 999;
+    -fx-padding: 3;
+    -fx-spacing: 2;
+}
+.segmented .toggle-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 999;
+    -fx-border-width: 0;
+    -fx-padding: 6 14 6 14;
+    -fx-text-fill: -t-ink-2;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 6;
+}
+.segmented .toggle-button .ikonli-font-icon { -fx-icon-color: -t-ink-2; -fx-icon-size: 16; }
+.segmented .toggle-button:hover { -fx-background-color: rgba(255, 255, 255, 0.6); }
+.segmented .toggle-button:selected {
+    -fx-background-color: white;
+    -fx-text-fill: -t-brand-deep;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-effect: dropshadow(gaussian, rgba(20, 38, 28, 0.15), 4, 0, 0, 1);
+}
+.segmented .toggle-button:selected .ikonli-font-icon { -fx-icon-color: -t-brand; }
+
+.summary-strip {
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 14;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 14;
+    -fx-padding: 12 20 12 20;
+    -fx-spacing: 20;
+}
+.sum-label { -fx-text-fill: -t-muted; -fx-font-size: 12px; }
+.sum-value { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 18px; -fx-text-fill: -t-ink; }
+
+.pager { -fx-spacing: 8; -fx-alignment: center-left; }
+.page-no { -fx-text-fill: -t-ink-2; -fx-font-family: "Segoe UI Semibold"; -fx-padding: 0 4 0 4; }
+
+/* ---------- Bảng ---------- */
+.grid {
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 14;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 14;
+    -fx-padding: 4;
+}
+.grid .column-header-background { -fx-background-color: transparent; }
+.grid .column-header, .grid .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -t-line transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-pref-height: 38;
+}
+.grid .column-header .label {
+    -fx-text-fill: -t-muted;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 6;
+}
+.grid .table-row-cell {
+    -fx-background-color: -t-surface;
+    -fx-border-color: transparent transparent -t-line-2 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 48;
+}
+.grid .table-row-cell:odd { -fx-background-color: -t-surface-2; }
+.grid .table-row-cell:hover { -fx-background-color: -t-brand-soft-2; }
+.grid .table-row-cell:selected { -fx-background-color: -t-brand-soft; }
+.grid .table-row-cell:selected .table-cell { -fx-text-fill: -t-ink; }
+.grid .table-cell { -fx-padding: 0 8 0 8; -fx-alignment: center-left; -fx-text-fill: -t-ink; }
+.grid .col-number.table-column, .grid .col-number .table-cell { -fx-alignment: center-right; }
+.grid .placeholder .label { -fx-text-fill: -t-muted; }
+.cell-title { -fx-text-fill: -t-ink; -fx-font-family: "Segoe UI Semibold"; }
+.cell-sub { -fx-text-fill: -t-muted; -fx-font-size: 12px; }
+
+/* Nhãn trạng thái có chấm màu */
+.pill {
+    -fx-background-radius: 999;
+    -fx-padding: 3 10 3 8;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-graphic-text-gap: 6;
+}
+.pill-dot { -fx-min-width: 7; -fx-min-height: 7; -fx-max-width: 7; -fx-max-height: 7; -fx-background-radius: 999; }
+.pill-green { -fx-background-color: -t-brand-soft; -fx-text-fill: -t-brand-deep; }
+.pill-green .pill-dot { -fx-background-color: -t-brand; }
+.pill-amber { -fx-background-color: -t-sun-soft; -fx-text-fill: -t-sun-ink; }
+.pill-amber .pill-dot { -fx-background-color: -t-sun; }
+.pill-red { -fx-background-color: -t-red-soft; -fx-text-fill: -t-red-ink; }
+.pill-red .pill-dot { -fx-background-color: -t-red; }
+.pill-gray { -fx-background-color: -t-gray-soft; -fx-text-fill: -t-gray-ink; }
+.pill-gray .pill-dot { -fx-background-color: #9AA59E; }
+.pill-blue { -fx-background-color: -t-blue-soft; -fx-text-fill: #1E40AF; }
+.pill-blue .pill-dot { -fx-background-color: -t-blue; }
+.pill-violet { -fx-background-color: -t-violet-soft; -fx-text-fill: #5B21B6; }
+.pill-violet .pill-dot { -fx-background-color: -t-violet; }
+
+/* Thanh tồn kho trong bảng sản phẩm */
+.stock-bar, .top-bar { -fx-pref-height: 6; -fx-min-height: 6; }
+.stock-bar > .track, .top-bar > .track { -fx-background-color: -t-line-2; -fx-background-radius: 999; -fx-background-insets: 0; }
+.stock-bar > .bar, .top-bar > .bar { -fx-background-radius: 999; -fx-background-insets: 0; -fx-padding: 3; }
+.stock-con_hang > .bar, .top-bar > .bar { -fx-background-color: -t-brand; }
+.stock-sap_het > .bar { -fx-background-color: -t-sun; }
+.stock-het_hang > .bar { -fx-background-color: -t-red; }
+.stock-ngung_ban > .bar { -fx-background-color: #9AA59E; }
+
+/* ---------- Biểu đồ ---------- */
+.chart { -fx-padding: 4 0 0 0; }
+.chart-plot-background { -fx-background-color: transparent; }
+.chart-vertical-grid-lines { -fx-stroke: transparent; }
+.chart-horizontal-grid-lines { -fx-stroke: -t-line-2; -fx-stroke-dash-array: 4 4; }
+.chart-alternative-row-fill { -fx-fill: transparent; }
+.axis { -fx-tick-label-fill: -t-muted; -fx-font-size: 12px; }
+.axis-label { -fx-text-fill: -t-muted; -fx-font-size: 11px; }
+.default-color0.chart-series-area-line { -fx-stroke: #16803C; -fx-stroke-width: 2.5px; }
+.default-color0.chart-series-area-fill { -fx-fill: linear-gradient(to bottom, rgba(22, 128, 60, 0.32), rgba(22, 128, 60, 0.02)); }
+.default-color0.chart-area-symbol { -fx-background-color: #16803C, white; -fx-background-insets: 0, 2; -fx-background-radius: 6; -fx-padding: 5; }
+.default-color0.chart-bar { -fx-bar-fill: #16803C; -fx-background-radius: 6 6 0 0; }
+.default-color1.chart-bar { -fx-bar-fill: #F59E0B; -fx-background-radius: 6 6 0 0; }
+.legend { -fx-font-size: 12px; -fx-text-fill: -t-muted; -fx-graphic-text-gap: 6; -fx-padding: 0 0 0 10; }
+.swatch { -fx-min-width: 10; -fx-min-height: 10; -fx-max-width: 10; -fx-max-height: 10; -fx-background-radius: 3; }
+.swatch-revenue { -fx-background-color: #16803C; }
+.swatch-profit { -fx-background-color: #F59E0B; }
+
+/* ---------- Danh mục dạng thẻ ---------- */
+.card-grid { -fx-hgap: 16; -fx-vgap: 16; -fx-padding: 2 2 12 2; }
+.cat-card, .card-add {
+    -fx-pref-width: 268;
+    -fx-min-height: 210;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-padding: 16;
+}
+.cat-card { -fx-background-color: -t-surface; -fx-border-color: -t-line; }
+.cat-card:hover { -fx-border-color: -t-brand; -fx-effect: dropshadow(gaussian, rgba(22, 128, 60, 0.14), 14, 0, 0, 4); }
+.card-name { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 17px; -fx-text-fill: -t-ink; }
+.card-foot { -fx-border-color: -t-line-2 transparent transparent transparent; -fx-border-width: 1 0 0 0; -fx-padding: 10 0 0 0; }
+.card-stat { -fx-font-family: "Segoe UI Semibold"; -fx-text-fill: -t-ink; }
+.card-stat-sub { -fx-font-size: 12px; -fx-text-fill: -t-muted; }
+.card-add {
+    -fx-background-color: transparent;
+    -fx-border-color: #B9CDBD;
+    -fx-border-style: segments(6, 5);
+    -fx-cursor: hand;
+}
+.card-add .label { -fx-text-fill: -t-brand; -fx-font-family: "Segoe UI Semibold"; }
+.card-add .ikonli-font-icon { -fx-icon-color: -t-brand; -fx-icon-size: 30; }
+.card-add:hover { -fx-background-color: -t-brand-soft-2; }
+
+/* ---------- Nhập hàng ---------- */
+.field { -fx-spacing: 5; }
+.add-line {
+    -fx-spacing: 10;
+    -fx-alignment: bottom-left;
+    -fx-background-color: -t-surface-2;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}
+.import-foot { -fx-spacing: 14; -fx-alignment: center-left; }
+.import-total { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 20px; -fx-text-fill: -t-brand-deep; }
+
+/* ---------- Khách hàng: thẻ thành viên ---------- */
+.member-card {
+    -fx-background-color: linear-gradient(to bottom right, #0D4F25, #16803C 55%, #4CB86D);
+    -fx-background-radius: 16;
+    -fx-padding: 16 18 16 18;
+    -fx-effect: dropshadow(gaussian, rgba(13, 79, 37, 0.3), 16, 0, 0, 6);
+}
+.member-card .ikonli-font-icon { -fx-icon-color: #FCD34D; -fx-icon-size: 18; }
+.member-brand { -fx-text-fill: rgba(255, 255, 255, 0.85); -fx-font-size: 11px; -fx-font-family: "Segoe UI Semibold"; }
+.member-code { -fx-text-fill: white; -fx-font-family: "Consolas"; -fx-font-size: 14px; }
+.member-name { -fx-text-fill: white; -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 19px; }
+.member-sub { -fx-text-fill: rgba(255, 255, 255, 0.75); -fx-font-size: 12px; }
+.member-sub-strong { -fx-text-fill: white; -fx-font-family: "Segoe UI Semibold"; }
+.member-points { -fx-text-fill: #FCD34D; -fx-font-family: "Segoe UI Black"; -fx-font-size: 24px; }
+.mini-stat {
+    -fx-background-color: -t-surface-2;
+    -fx-background-radius: 12;
+    -fx-padding: 10 12 10 12;
+    -fx-max-width: infinity;
+}
+.avatar-soft, .avatar-sm {
+    -fx-background-color: -t-brand-soft;
+    -fx-background-radius: 999;
+    -fx-text-fill: -t-brand-deep;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-min-width: 34; -fx-min-height: 34; -fx-max-width: 34; -fx-max-height: 34;
+}
+.avatar-sm .ikonli-font-icon { -fx-icon-color: -t-sun; -fx-icon-size: 18; }
+
+/* ---------- Nhân viên ---------- */
+.role-option {
+    -fx-background-color: -t-surface;
+    -fx-border-color: -color-border-default;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 12;
+    -fx-graphic-text-gap: 8;
+    -fx-cursor: hand;
+}
+.role-option .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 20; }
+.role-option:selected {
+    -fx-background-color: -t-brand-soft-2;
+    -fx-border-color: -t-brand;
+    -fx-border-width: 2;
+    -fx-text-fill: -t-brand-deep;
+    -fx-font-family: "Segoe UI Semibold";
+}
+.role-option:selected .ikonli-font-icon { -fx-icon-color: -t-brand; }
+
+/* ---------- Hộp thoại form ---------- */
+.form-dialog { -fx-background-color: -t-surface; }
+.form-dialog > .button-bar { -fx-padding: 12 22 18 22; }
+/* DialogPane gắn class "content" vào chính node nội dung nên cần cùng độ ưu tiên để ghi đè */
+.form-dialog > .dialog-body.content { -fx-padding: 22 22 6 22; -fx-background-color: -t-surface; }
+.dialog-head { -fx-padding: 0 0 6 0; }
+.dialog-icon {
+    -fx-background-color: -t-brand-soft;
+    -fx-background-radius: 12;
+    -fx-min-width: 44; -fx-min-height: 44; -fx-max-width: 44; -fx-max-height: 44;
+}
+.dialog-icon .ikonli-font-icon { -fx-icon-color: -t-brand; -fx-icon-size: 22; }
+.dialog-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 17px; -fx-text-fill: -t-ink; }
+.dialog-sub { -fx-text-fill: -t-muted; -fx-font-size: 12px; }
+.success-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 16px; -fx-text-fill: -t-brand; -fx-graphic-text-gap: 8; }
+.success-title .ikonli-font-icon { -fx-icon-color: -t-brand; -fx-icon-size: 22; }
+
+/* Thông báo nhanh góc trên phải */
+.toast {
+    -fx-background-color: -t-brand-deep;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-padding: 11 18 11 14;
+    -fx-graphic-text-gap: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.22), 16, 0, 0, 5);
+}
+.toast .ikonli-font-icon { -fx-icon-color: #86EFAC; -fx-icon-size: 18; }
+
+/* ---------- Phiếu tính tiền ---------- */
+.receipt-scroll, .receipt-scroll > .viewport { -fx-background-color: transparent; -fx-background: transparent; }
+.receipt-scroll { -fx-border-width: 0; -fx-padding: 0; }
+.receipt-host { -fx-padding: 4; }
+.receipt {
+    -fx-background-color: #FFFEF8;
+    -fx-border-color: #E6E2CF;
+    -fx-border-style: segments(3, 3);
+    -fx-padding: 16 18 18 18;
+    -fx-pref-width: 300;
+    -fx-max-width: 320;
+}
+.receipt .label { -fx-font-family: "Consolas"; -fx-font-size: 12.5px; -fx-text-fill: #2B2B2B; }
+.receipt .rc-shop { -fx-font-size: 15px; -fx-font-weight: bold; }
+.receipt .rc-heading { -fx-font-weight: bold; -fx-padding: 2 0 2 0; }
+.receipt .rc-small { -fx-font-size: 11px; -fx-text-fill: #6B6B6B; }
+.receipt .rc-dash {
+    -fx-min-height: 1; -fx-pref-height: 1; -fx-max-height: 1;
+    -fx-border-color: #B5B09C transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-style: segments(4, 4);
+}
+.receipt .rc-gap { -fx-padding: 5 0 5 0; }
+.receipt .rc-item { -fx-font-weight: bold; }
+.receipt .rc-total .label { -fx-font-size: 15px; -fx-font-weight: bold; }
+.receipt .rc-void { -fx-text-fill: #C2362B; -fx-font-weight: bold; -fx-font-size: 14px; }
+.receipt-void { -fx-background-color: #FFF6F5; }
+
+/* ==================== Quầy bán hàng ==================== */
+.pos { -fx-padding: 16 18 16 18; -fx-spacing: 16; -fx-background-color: -t-bg; }
+.pos-left { -fx-spacing: 12; }
+.scan-bar {
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 14;
+    -fx-border-color: -t-brand;
+    -fx-border-width: 2;
+    -fx-border-radius: 14;
+    -fx-padding: 4 12 4 14;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+.scan-bar .ikonli-font-icon { -fx-icon-color: -t-brand; -fx-icon-size: 26; }
+.scan-bar .text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-font-size: 16px;
+    -fx-padding: 10 4 10 4;
+}
+.kbd {
+    -fx-background-color: -t-surface-2;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 11px;
+    -fx-text-fill: -t-muted;
+}
+.chip-scroll, .chip-scroll > .viewport { -fx-background-color: transparent; -fx-background: transparent; }
+.chip-scroll { -fx-padding: 0; -fx-border-width: 0; }
+.cat-strip { -fx-spacing: 8; -fx-padding: 2 0 2 0; }
+.cat {
+    -fx-background-color: -t-surface;
+    -fx-border-color: -t-line;
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
+    -fx-padding: 7 16 7 16;
+    -fx-text-fill: -t-ink-2;
+    -fx-cursor: hand;
+}
+.cat:hover { -fx-border-color: -t-brand; }
+.cat:selected { -fx-background-color: -t-brand; -fx-border-color: -t-brand; -fx-text-fill: white; -fx-font-family: "Segoe UI Semibold"; }
+.tile-scroll, .tile-scroll > .viewport { -fx-background-color: transparent; -fx-background: transparent; }
+.tile-scroll { -fx-padding: 0; -fx-border-width: 0; }
+.tile-grid { -fx-hgap: 12; -fx-vgap: 12; -fx-padding: 2 4 8 2; }
+.tile {
+    -fx-pref-width: 156;
+    -fx-min-height: 138;
+    -fx-pref-height: 138;
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 14;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 14;
+    -fx-padding: 12;
+    -fx-cursor: hand;
+}
+.tile:hover { -fx-border-color: -t-brand; -fx-effect: dropshadow(gaussian, rgba(22, 128, 60, 0.18), 12, 0, 0, 3); }
+.tile:pressed { -fx-background-color: -t-brand-soft-2; }
+.tile-cat { -fx-font-size: 11px; -fx-text-fill: -t-brand; -fx-font-family: "Segoe UI Semibold"; }
+.tile-name { -fx-font-family: "Segoe UI Semibold"; -fx-text-fill: -t-ink; -fx-font-size: 13.5px; }
+.tile-price { -fx-font-family: "Segoe UI Black"; -fx-text-fill: -t-brand-deep; -fx-font-size: 16px; }
+.tile-stock { -fx-font-size: 11px; -fx-text-fill: -t-muted; }
+.tile-stock-low { -fx-text-fill: -t-sun-ink; -fx-font-family: "Segoe UI Semibold"; }
+.tile-out { -fx-opacity: 0.5; }
+
+.cart {
+    -fx-min-width: 400; -fx-pref-width: 400; -fx-max-width: 400;
+    -fx-background-color: -t-surface;
+    -fx-background-radius: 18;
+    -fx-border-color: -t-line;
+    -fx-border-radius: 18;
+    -fx-padding: 16;
+    -fx-spacing: 12;
+    -fx-effect: dropshadow(gaussian, rgba(20, 38, 28, 0.06), 18, 0, 0, 4);
+}
+.cart-head { -fx-spacing: 8; -fx-alignment: center-left; }
+.cart-head .ikonli-font-icon { -fx-icon-color: -t-brand; -fx-icon-size: 22; }
+.cart-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 17px; -fx-text-fill: -t-ink; }
+.count-pill {
+    -fx-background-color: -t-sun;
+    -fx-background-radius: 999;
+    -fx-text-fill: #3B2300;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 12px;
+    -fx-padding: 1 8 1 8;
+}
+.customer-search {
+    -fx-background-color: -t-surface-2;
+    -fx-background-radius: 12;
+    -fx-padding: 2 4 2 12;
+    -fx-spacing: 6;
+    -fx-alignment: center-left;
+}
+.customer-search .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 18; }
+.customer-search .text-field { -fx-background-color: transparent; -fx-border-width: 0; -fx-background-insets: 0; }
+.customer-card {
+    -fx-background-color: -t-sun-soft;
+    -fx-background-radius: 12;
+    -fx-padding: 8 6 8 10;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+.cart-scroll, .cart-scroll > .viewport { -fx-background-color: transparent; -fx-background: transparent; }
+.cart-scroll { -fx-padding: 0; -fx-border-width: 0; }
+.cart-list { -fx-spacing: 0; }
+.cart-empty { -fx-alignment: center; -fx-spacing: 4; -fx-padding: 40 0 40 0; }
+.cart-empty .ikonli-font-icon { -fx-icon-color: #C5D3C8; -fx-icon-size: 52; }
+.cart-row {
+    -fx-padding: 10 2 10 2;
+    -fx-border-color: transparent transparent -t-line-2 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: center-left;
+}
+.stepper {
+    -fx-background-color: -t-surface-2;
+    -fx-border-color: -t-line;
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
+}
+.step-btn {
+    -fx-background-color: transparent;
+    -fx-background-radius: 999;
+    -fx-padding: 4;
+    -fx-cursor: hand;
+}
+.step-btn .ikonli-font-icon { -fx-icon-color: -t-ink-2; -fx-icon-size: 16; }
+.step-btn:hover { -fx-background-color: -t-brand-soft; }
+.qty { -fx-min-width: 30; -fx-alignment: center; -fx-font-family: "Segoe UI Semibold"; }
+.line-total { -fx-font-family: "Segoe UI Semibold"; -fx-text-fill: -t-ink; }
+
+.checkout {
+    -fx-spacing: 8;
+    -fx-border-color: -t-line transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-style: segments(6, 4);
+    -fx-padding: 12 0 0 0;
+}
+.sum-row { -fx-alignment: center-left; -fx-spacing: 8; }
+.sum-row > .label { -fx-text-fill: -t-ink-2; }
+.sum-total > .label { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 16px; -fx-text-fill: -t-ink; }
+#lblPhaiTra { -fx-font-family: "Segoe UI Black"; -fx-font-size: 24px; -fx-text-fill: -t-brand-deep; }
+.money-input { -fx-alignment: center-right; -fx-font-family: "Segoe UI Semibold"; }
+.quick-cash { -fx-spacing: 6; }
+.quick-cash .button {
+    -fx-background-color: -t-surface-2;
+    -fx-border-color: -t-line;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 5 4 5 4;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+.quick-cash .button:hover { -fx-border-color: -t-brand; -fx-text-fill: -t-brand-deep; }
+.change { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 16px; -fx-text-fill: -t-brand; }
+.change-bad { -fx-text-fill: -t-red; }
+.btn-pay {
+    -fx-background-color: linear-gradient(to right, #16803C, #22A04E);
+    -fx-background-radius: 14;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 17px;
+    -fx-padding: 14;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 10;
+}
+.btn-pay .ikonli-font-icon { -fx-icon-color: white; -fx-icon-size: 22; }
+.btn-pay:hover { -fx-background-color: -t-brand-hover; }
+.btn-pay:disabled { -fx-opacity: 0.45; }
+
+/* ==================== Đăng nhập ==================== */
+.login-bg {
+    -fx-background-color:
+        radial-gradient(center 15% 10%, radius 45%, rgba(253, 224, 71, 0.35), transparent),
+        radial-gradient(center 90% 95%, radius 50%, rgba(74, 222, 128, 0.35), transparent),
+        linear-gradient(to bottom right, #0D4F25, #16803C);
+}
+.login-wrap { -fx-spacing: 14; -fx-alignment: center; }
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-padding: 30 34 30 34;
+    -fx-spacing: 6;
+    -fx-pref-width: 420;
+    -fx-max-width: 420;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.28), 40, 0, 0, 14);
+}
+.login-brand { -fx-spacing: 14; -fx-alignment: center-left; -fx-padding: 0 0 14 0; }
+.login-title { -fx-font-family: "Segoe UI Semibold"; -fx-font-size: 21px; -fx-text-fill: -t-ink; }
+.input-icon {
+    -fx-background-color: -t-surface-2;
+    -fx-border-color: -color-border-default;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 0 6 0 12;
+    -fx-spacing: 6;
+    -fx-alignment: center-left;
+}
+.input-icon .ikonli-font-icon { -fx-icon-color: -t-muted; -fx-icon-size: 18; }
+.input-icon .text-field, .input-icon .password-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 10 4 10 4;
+}
+.eye { -fx-background-color: transparent; -fx-padding: 4; -fx-cursor: hand; }
+.eye:selected .ikonli-font-icon { -fx-icon-color: -t-brand; }

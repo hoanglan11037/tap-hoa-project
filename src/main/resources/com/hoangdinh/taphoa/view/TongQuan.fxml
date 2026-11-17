@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/app.css" fx:id="root"
+            fitToWidth="true" styleClass="page-scroll" fx:controller="com.hoangdinh.taphoa.controller.TongQuanController">
+    <VBox styleClass="page">
+        <!-- Lời chào -->
+        <HBox styleClass="hero">
+            <VBox HBox.hgrow="ALWAYS" spacing="4">
+                <Label fx:id="lblChao" styleClass="hero-title"/>
+                <Label fx:id="lblChaoSub" styleClass="hero-sub"/>
+            </VBox>
+            <Button styleClass="btn-ghost-light" text="Làm mới" onAction="#reload">
+                <graphic><FontIcon iconLiteral="mdi2r-refresh"/></graphic>
+            </Button>
+            <Button styleClass="btn-light" text="Mở quầy bán hàng" onAction="#openBanHang">
+                <graphic><FontIcon iconLiteral="mdi2c-cash-register"/></graphic>
+            </Button>
+        </HBox>
+
+        <!-- Chỉ số -->
+        <HBox spacing="14">
+            <HBox styleClass="stat" HBox.hgrow="ALWAYS">
+                <StackPane styleClass="stat-icon, tone-green"><FontIcon iconLiteral="mdi2c-cash-multiple"/></StackPane>
+                <VBox>
+                    <Label styleClass="stat-label" text="Doanh thu hôm nay"/>
+                    <Label fx:id="kpiDoanhThu" styleClass="stat-value" text="–"/>
+                    <Label fx:id="kpiDoanhThuNote" styleClass="stat-note"/>
+                </VBox>
+            </HBox>
+            <HBox styleClass="stat" HBox.hgrow="ALWAYS">
+                <StackPane styleClass="stat-icon, tone-blue"><FontIcon iconLiteral="mdi2r-receipt"/></StackPane>
+                <VBox>
+                    <Label styleClass="stat-label" text="Hóa đơn hôm nay"/>
+                    <Label fx:id="kpiHoaDon" styleClass="stat-value" text="–"/>
+                    <Label fx:id="kpiHoaDonNote" styleClass="stat-note"/>
+                </VBox>
+            </HBox>
+            <HBox styleClass="stat" HBox.hgrow="ALWAYS">
+                <StackPane styleClass="stat-icon, tone-violet"><FontIcon iconLiteral="mdi2t-trending-up"/></StackPane>
+                <VBox>
+                    <Label styleClass="stat-label" text="Lãi gộp hôm nay"/>
+                    <Label fx:id="kpiLoiNhuan" styleClass="stat-value" text="–"/>
+                    <Label fx:id="kpiLoiNhuanNote" styleClass="stat-note"/>
+                </VBox>
+            </HBox>
+            <HBox styleClass="stat" HBox.hgrow="ALWAYS">
+                <StackPane styleClass="stat-icon, tone-amber"><FontIcon iconLiteral="mdi2a-alert-outline"/></StackPane>
+                <VBox>
+                    <Label styleClass="stat-label" text="Cần nhập thêm"/>
+                    <Label fx:id="kpiKho" styleClass="stat-value" text="–"/>
+                    <Label fx:id="kpiKhoNote" styleClass="stat-note"/>
+                </VBox>
+            </HBox>
+        </HBox>
+
+        <HBox spacing="14">
+            <VBox styleClass="panel" HBox.hgrow="ALWAYS">
+                <HBox styleClass="panel-head">
+                    <Label styleClass="panel-title" text="Doanh thu 7 ngày gần nhất"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTong7Ngay" styleClass="panel-meta"/>
+                </HBox>
+                <AreaChart fx:id="chart" legendVisible="false" animated="false" prefHeight="250" createSymbols="true">
+                    <xAxis><CategoryAxis tickMarkVisible="false"/></xAxis>
+                    <yAxis><NumberAxis minorTickVisible="false" tickMarkVisible="false" label="nghìn đồng"/></yAxis>
+                </AreaChart>
+            </VBox>
+            <VBox styleClass="panel" prefWidth="380" minWidth="360">
+                <HBox styleClass="panel-head">
+                    <Label styleClass="panel-title" text="Sắp hết hàng"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button styleClass="link" text="Xem kho" onAction="#openSanPham"/>
+                </HBox>
+                <VBox fx:id="listCanNhap" spacing="2"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="14">
+            <VBox styleClass="panel" HBox.hgrow="ALWAYS">
+                <HBox styleClass="panel-head">
+                    <Label styleClass="panel-title" text="Hóa đơn gần đây"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button styleClass="link" text="Tất cả hóa đơn" onAction="#openHoaDon"/>
+                </HBox>
+                <TableView fx:id="tblHoaDon" styleClass="grid" prefHeight="268">
+                    <columns>
+                        <TableColumn fx:id="colSo" text="Số HĐ" prefWidth="100"/>
+                        <TableColumn fx:id="colGio" text="Giờ" prefWidth="110"/>
+                        <TableColumn fx:id="colKhach" text="Khách hàng" prefWidth="170"/>
+                        <TableColumn fx:id="colTien" text="Thanh toán" prefWidth="120"/>
+                        <TableColumn fx:id="colTt" text="Trạng thái" prefWidth="120"/>
+                    </columns>
+                    <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN"/></columnResizePolicy>
+                    <placeholder><Label text="Chưa có hóa đơn"/></placeholder>
+                </TableView>
+            </VBox>
+            <VBox styleClass="panel" prefWidth="380" minWidth="360">
+                <HBox styleClass="panel-head">
+                    <Label styleClass="panel-title" text="Bán chạy hôm nay"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <FontIcon iconLiteral="mdi2f-fire" styleClass="fire"/>
+                </HBox>
+                <VBox fx:id="listBanChay" spacing="2"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:id="root" stylesheets="@../css/app.css"
+            prefWidth="1320" prefHeight="820" fx:controller="com.hoangdinh.taphoa.controller.MainController">
+    <top>
+        <VBox styleClass="header">
+            <!-- Hàng 1: thương hiệu, đồng hồ, nút bán hàng, tài khoản -->
+            <HBox styleClass="topbar">
+                <StackPane styleClass="logo">
+                    <FontIcon iconLiteral="mdi2s-storefront-outline"/>
+                </StackPane>
+                <VBox styleClass="brand-box">
+                    <Label styleClass="brand-name" text="Hoàng Đinh"/>
+                    <Label styleClass="brand-tagline" text="Tạp hóa &amp; tiện lợi"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblClock" styleClass="clock">
+                    <graphic><FontIcon iconLiteral="mdi2c-calendar-today"/></graphic>
+                </Label>
+                <Button styleClass="btn-sell" text="Bán hàng  F2" onAction="#onBanHang">
+                    <graphic><FontIcon iconLiteral="mdi2c-cart-plus"/></graphic>
+                </Button>
+                <HBox styleClass="user-chip">
+                    <Label fx:id="lblAvatar" styleClass="avatar"/>
+                    <VBox>
+                        <MenuButton fx:id="userMenu" styleClass="user-menu">
+                            <items>
+                                <MenuItem text="Đổi mật khẩu" onAction="#onDoiMatKhau">
+                                    <graphic><FontIcon iconLiteral="mdi2k-key-variant"/></graphic>
+                                </MenuItem>
+                                <SeparatorMenuItem/>
+                                <MenuItem text="Đăng xuất" onAction="#onLogout">
+                                    <graphic><FontIcon iconLiteral="mdi2l-logout"/></graphic>
+                                </MenuItem>
+                            </items>
+                        </MenuButton>
+                        <Label fx:id="lblUserRole" styleClass="user-role"/>
+                    </VBox>
+                </HBox>
+            </HBox>
+
+            <!-- Hàng 2: các tab chức năng -->
+            <HBox styleClass="tabbar">
+                <ToggleButton fx:id="navTongQuan" styleClass="tab" text="Tổng quan" userData="TongQuan">
+                    <toggleGroup><ToggleGroup fx:id="navGroup"/></toggleGroup>
+                    <graphic><FontIcon iconLiteral="mdi2v-view-dashboard-outline"/></graphic>
+                </ToggleButton>
+                <ToggleButton styleClass="tab" text="Bán hàng" toggleGroup="$navGroup" userData="BanHang">
+                    <graphic><FontIcon iconLiteral="mdi2c-cash-register"/></graphic>
+                </ToggleButton>
+                <ToggleButton styleClass="tab" text="Hóa đơn" toggleGroup="$navGroup" userData="HoaDon">
+                    <graphic><FontIcon iconLiteral="mdi2r-receipt"/></graphic>
+                </ToggleButton>
+                <ToggleButton styleClass="tab" text="Sản phẩm" toggleGroup="$navGroup" userData="SanPham">
+                    <graphic><FontIcon iconLiteral="mdi2p-package-variant-closed"/></graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="navDanhMuc" styleClass="tab" text="Danh mục" toggleGroup="$navGroup" userData="DanhMuc">
+                    <graphic><FontIcon iconLiteral="mdi2s-shape-outline"/></graphic>
+                </ToggleButton>
+                <ToggleButton styleClass="tab" text="Nhập hàng" toggleGroup="$navGroup" userData="NhapHang">
+                    <graphic><FontIcon iconLiteral="mdi2t-truck-delivery-outline"/></graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="navNhaCungCap" styleClass="tab" text="Nhà cung cấp" toggleGroup="$navGroup" userData="NhaCungCap">
+                    <graphic><FontIcon iconLiteral="mdi2f-factory"/></graphic>
+                </ToggleButton>
+                <ToggleButton styleClass="tab" text="Khách hàng" toggleGroup="$navGroup" userData="KhachHang">
+                    <graphic><FontIcon iconLiteral="mdi2a-account-group-outline"/></graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="navThongKe" styleClass="tab" text="Báo cáo" toggleGroup="$navGroup" userData="ThongKe">
+                    <graphic><FontIcon iconLiteral="mdi2c-chart-bar"/></graphic>
+                </ToggleButton>
+                <ToggleButton fx:id="navTaiKhoan" styleClass="tab" text="Nhân viên" toggleGroup="$navGroup" userData="TaiKhoan">
+                    <graphic><FontIcon iconLiteral="mdi2s-shield-account-outline"/></graphic>
+                </ToggleButton>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content"/>
+    </center>
+</BorderPane>

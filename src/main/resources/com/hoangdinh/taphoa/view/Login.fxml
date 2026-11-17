@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<!-- Nền xanh, thẻ đăng nhập ở giữa -->
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/app.css"
+           prefWidth="960" prefHeight="600" styleClass="login-bg"
+           fx:controller="com.hoangdinh.taphoa.controller.LoginController">
+
+    <VBox styleClass="login-wrap" maxWidth="-Infinity" maxHeight="-Infinity">
+        <VBox styleClass="login-card">
+            <HBox styleClass="login-brand">
+                <StackPane styleClass="logo, logo-lg">
+                    <FontIcon iconLiteral="mdi2s-storefront-outline"/>
+                </StackPane>
+                <VBox>
+                    <Label styleClass="login-title" text="Tạp hóa Hoàng Đinh"/>
+                    <Label styleClass="muted" text="Đăng nhập để bắt đầu ca làm việc"/>
+                </VBox>
+            </HBox>
+
+            <Label fx:id="lblError" styleClass="alert-error" maxWidth="Infinity" wrapText="true" managed="false" visible="false"/>
+
+            <Label styleClass="field-label" text="Tên đăng nhập" labelFor="$txtUsername"/>
+            <HBox styleClass="input-icon">
+                <FontIcon iconLiteral="mdi2a-account-outline"/>
+                <TextField fx:id="txtUsername" promptText="vd: thungan1" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Label fx:id="errUsername" styleClass="field-error" managed="false" visible="false"/>
+
+            <Label styleClass="field-label" text="Mật khẩu" labelFor="$txtPassword"/>
+            <HBox styleClass="input-icon">
+                <FontIcon iconLiteral="mdi2l-lock-outline"/>
+                <StackPane HBox.hgrow="ALWAYS">
+                    <PasswordField fx:id="txtPassword" onAction="#onLogin"/>
+                    <TextField fx:id="txtPasswordShown" onAction="#onLogin" managed="false" visible="false"/>
+                </StackPane>
+                <ToggleButton fx:id="btnShowPassword" styleClass="eye" focusTraversable="false">
+                    <graphic><FontIcon iconLiteral="mdi2e-eye-outline"/></graphic>
+                </ToggleButton>
+            </HBox>
+            <Label fx:id="errPassword" styleClass="field-error" managed="false" visible="false"/>
+
+            <Region minHeight="8"/>
+            <Button fx:id="btnLogin" styleClass="btn-primary, btn-block" text="Đăng nhập" defaultButton="true" onAction="#onLogin"/>
+        </VBox>
+    </VBox>
+</StackPane>

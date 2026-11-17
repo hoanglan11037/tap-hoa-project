@@ -1,0 +1,32 @@
+package com.hoangdinh.taphoa.dto.request;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class NhaCungCapRequest {
+    @NotBlank(message = "Nhập tên nhà cung cấp")
+    @Size(max = 150, message = "Tên nhà cung cấp tối đa 150 ký tự")
+    private String tenNcc;
+
+    @Size(max = 100, message = "Người liên hệ tối đa 100 ký tự")
+    private String nguoiLienHe;
+
+    @NotBlank(message = "Nhập số điện thoại")
+    @Pattern(regexp = "0\\d{9,10}", message = "Số điện thoại gồm 10–11 chữ số, bắt đầu bằng 0")
+    private String sdt;
+
+    @Size(max = 200, message = "Địa chỉ tối đa 200 ký tự")
+    private String diaChi;
+
+    @Builder.Default
+    private boolean trangThai = true;
+}

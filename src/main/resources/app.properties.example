@@ -1,0 +1,5 @@
+db.url=
+db.localdb-instance=MSSQLLocalDB
+db.name=taphoa_db
+db.user=taphoa_app
+db.password=TapHoa@123456

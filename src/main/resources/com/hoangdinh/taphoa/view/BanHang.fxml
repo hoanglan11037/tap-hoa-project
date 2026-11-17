@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/app.css" fx:id="root"
+      styleClass="pos" fx:controller="com.hoangdinh.taphoa.controller.BanHangController">
+
+    <!-- ===== Bên trái: tìm / quét mã và lưới sản phẩm ===== -->
+    <VBox styleClass="pos-left" HBox.hgrow="ALWAYS">
+        <HBox styleClass="scan-bar">
+            <FontIcon iconLiteral="mdi2b-barcode-scan"/>
+            <TextField fx:id="txtScan" promptText="Quét mã vạch, gõ mã SP hoặc tên sản phẩm rồi Enter" HBox.hgrow="ALWAYS"/>
+            <Label styleClass="kbd" text="Enter"/>
+        </HBox>
+        <ScrollPane styleClass="chip-scroll" fitToHeight="true" vbarPolicy="NEVER" hbarPolicy="NEVER" minHeight="44">
+            <HBox fx:id="boxDanhMuc" styleClass="cat-strip">
+                <ToggleButton styleClass="cat" text="Tất cả" selected="true">
+                    <toggleGroup><ToggleGroup fx:id="dmGroup"/></toggleGroup>
+                </ToggleButton>
+            </HBox>
+        </ScrollPane>
+        <ScrollPane fitToWidth="true" styleClass="tile-scroll" VBox.vgrow="ALWAYS">
+            <FlowPane fx:id="grid" styleClass="tile-grid"/>
+        </ScrollPane>
+    </VBox>
+
+    <!-- ===== Bên phải: giỏ hàng và thanh toán ===== -->
+    <VBox styleClass="cart">
+        <HBox styleClass="cart-head">
+            <FontIcon iconLiteral="mdi2c-cart-outline"/>
+            <Label styleClass="cart-title" text="Giỏ hàng"/>
+            <Label fx:id="lblSoMon" styleClass="count-pill" text="0"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button styleClass="link-danger" text="Xóa giỏ" onAction="#onClearCart"/>
+        </HBox>
+
+        <!-- Khách hàng -->
+        <HBox fx:id="boxTimKhach" styleClass="customer-search">
+            <FontIcon iconLiteral="mdi2p-phone-outline"/>
+            <TextField fx:id="txtKhach" promptText="SĐT / mã thẻ khách (bỏ trống: khách lẻ)" HBox.hgrow="ALWAYS" onAction="#onTimKhach"/>
+            <Button styleClass="icon-btn" onAction="#onKhachMoi" accessibleText="Thêm khách mới">
+                <graphic><FontIcon iconLiteral="mdi2a-account-plus-outline"/></graphic>
+            </Button>
+        </HBox>
+        <HBox fx:id="boxKhach" styleClass="customer-card" managed="false" visible="false">
+            <StackPane styleClass="avatar-sm"><FontIcon iconLiteral="mdi2s-star-outline"/></StackPane>
+            <VBox HBox.hgrow="ALWAYS">
+                <Label fx:id="lblKhachTen" styleClass="cell-title"/>
+                <Label fx:id="lblKhachDiem" styleClass="cell-sub"/>
+            </VBox>
+            <Button styleClass="icon-btn" onAction="#onBoKhach" accessibleText="Bỏ chọn khách">
+                <graphic><FontIcon iconLiteral="mdi2c-close"/></graphic>
+            </Button>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" styleClass="cart-scroll" VBox.vgrow="ALWAYS">
+            <StackPane>
+                <VBox fx:id="cartList" styleClass="cart-list"/>
+                <VBox fx:id="cartEmpty" styleClass="cart-empty">
+                    <FontIcon iconLiteral="mdi2b-basket-outline"/>
+                    <Label text="Chưa có hàng trong giỏ"/>
+                    <Label styleClass="muted" text="Bấm vào sản phẩm hoặc quét mã để thêm"/>
+                </VBox>
+            </StackPane>
+        </ScrollPane>
+
+        <VBox styleClass="checkout">
+            <HBox styleClass="sum-row">
+                <Label text="Tiền hàng"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblTongTien" styleClass="money" text="0 đ"/>
+            </HBox>
+            <HBox styleClass="sum-row">
+                <Label text="Giảm giá"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtGiamGia" styleClass="money-input" promptText="0" prefWidth="130"/>
+            </HBox>
+            <HBox styleClass="sum-row, sum-total">
+                <Label text="Khách cần trả"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblPhaiTra" text="0 đ"/>
+            </HBox>
+
+            <HBox styleClass="segmented">
+                <ToggleButton fx:id="ptTienMat" text="Tiền mặt" userData="TIEN_MAT" selected="true" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                    <toggleGroup><ToggleGroup fx:id="ptGroup"/></toggleGroup>
+                    <graphic><FontIcon iconLiteral="mdi2c-cash"/></graphic>
+                </ToggleButton>
+                <ToggleButton text="Chuyển khoản" toggleGroup="$ptGroup" userData="CHUYEN_KHOAN" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                    <graphic><FontIcon iconLiteral="mdi2b-bank-transfer"/></graphic>
+                </ToggleButton>
+                <ToggleButton text="Thẻ" toggleGroup="$ptGroup" userData="THE" HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                    <graphic><FontIcon iconLiteral="mdi2c-credit-card-outline"/></graphic>
+                </ToggleButton>
+            </HBox>
+
+            <VBox fx:id="boxTienMat" spacing="8">
+                <HBox styleClass="sum-row">
+                    <Label text="Khách đưa"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="txtKhachDua" styleClass="money-input" promptText="0" prefWidth="130"/>
+                </HBox>
+                <HBox fx:id="boxMenhGia" styleClass="quick-cash"/>
+                <HBox styleClass="sum-row">
+                    <Label text="Tiền thừa trả khách"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTienThua" styleClass="change" text="0 đ"/>
+                </HBox>
+            </VBox>
+
+            <Label fx:id="lblError" styleClass="alert-error" maxWidth="Infinity" wrapText="true" managed="false" visible="false"/>
+            <Button fx:id="btnThanhToan" styleClass="btn-pay" maxWidth="Infinity" text="Thanh toán  ·  F9" onAction="#onThanhToan">
+                <graphic><FontIcon iconLiteral="mdi2c-check-circle-outline"/></graphic>
+            </Button>
+        </VBox>
+    </VBox>
+</HBox>

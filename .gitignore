@@ -1,0 +1,17 @@
+# Build
+target/
+*.class
+dependency-reduced-pom.xml
+
+# Cấu hình trên máy (không đẩy lên git). Tạo từ file mẫu:
+#   copy src\main\resources\app.properties.example src\main\resources\app.properties
+src/main/resources/app.properties
+/app.properties
+*.local.properties
+.env
+
+# IDE / công cụ
+.idea/
+*.iml
+.vscode/
+.run/

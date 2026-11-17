@@ -1,0 +1,970 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
+  "version": "3.0.0",
+  "settings": {
+    "originX": 0,
+    "originY": 0,
+    "zoomLevel": 0.8,
+    "show": 511,
+    "database": 2,
+    "databaseName": "taphoa_db",
+    "canvasType": "ERD",
+    "language": 4,
+    "tableNameCase": 4,
+    "columnNameCase": 2,
+    "bracketType": 1,
+    "relationshipDataTypeSync": true,
+    "columnOrder": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "maxWidthComment": -1,
+    "lockSettings": 0
+  },
+  "doc": {
+    "tableIds": [
+      "t_tblTaiKhoan",
+      "t_tblDanhMuc",
+      "t_tblNhaCungCap",
+      "t_tblSanPham",
+      "t_tblKhachHang",
+      "t_tblHoaDon",
+      "t_tblChiTietHoaDon",
+      "t_tblPhieuNhap",
+      "t_tblChiTietPhieuNhap"
+    ],
+    "relationshipIds": [
+      "r_FK_SanPham_DanhMuc",
+      "r_FK_HoaDon_KhachHang",
+      "r_FK_HoaDon_TaiKhoan",
+      "r_FK_CTHD_HoaDon",
+      "r_FK_CTHD_SanPham",
+      "r_FK_PhieuNhap_NCC",
+      "r_FK_PhieuNhap_TaiKhoan",
+      "r_FK_CTPN_PhieuNhap",
+      "r_FK_CTPN_SanPham"
+    ],
+    "indexIds": [
+      "i_UX_SanPham_MaVach",
+      "i_IX_SanPham_Ten",
+      "i_IX_HoaDon_NgayLap",
+      "i_IX_PhieuNhap_Ngay"
+    ],
+    "memoIds": [
+      "m_ghi_chu"
+    ]
+  },
+  "collections": {
+    "tableEntities": {
+      "t_tblTaiKhoan": {
+        "id": "t_tblTaiKhoan",
+        "name": "tblTaiKhoan",
+        "comment": "Bảng tài khoản",
+        "columnIds": [
+          "c_tblTaiKhoan_fldMa_tk",
+          "c_tblTaiKhoan_fldTen_dang_nhap",
+          "c_tblTaiKhoan_fldMat_khau",
+          "c_tblTaiKhoan_fldHo_ten",
+          "c_tblTaiKhoan_fldVai_tro",
+          "c_tblTaiKhoan_fldTrang_thai",
+          "c_tblTaiKhoan_fldNgay_tao"
+        ],
+        "ui": {
+          "x": 1326.484375,
+          "y": 40
+        }
+      },
+      "t_tblDanhMuc": {
+        "id": "t_tblDanhMuc",
+        "name": "tblDanhMuc",
+        "comment": "Bảng danh mục",
+        "columnIds": [
+          "c_tblDanhMuc_fldMa_dm",
+          "c_tblDanhMuc_fldTen_dm",
+          "c_tblDanhMuc_fldMo_ta"
+        ],
+        "ui": {
+          "x": 1326.484375,
+          "y": 785
+        }
+      },
+      "t_tblNhaCungCap": {
+        "id": "t_tblNhaCungCap",
+        "name": "tblNhaCungCap",
+        "comment": "Bảng nhà cung cấp",
+        "columnIds": [
+          "c_tblNhaCungCap_fldMa_ncc",
+          "c_tblNhaCungCap_fldTen_ncc",
+          "c_tblNhaCungCap_fldNguoi_lien_he",
+          "c_tblNhaCungCap_fldSdt",
+          "c_tblNhaCungCap_fldDia_chi",
+          "c_tblNhaCungCap_fldTrang_thai"
+        ],
+        "ui": {
+          "x": 2546.9453125,
+          "y": 40
+        }
+      },
+      "t_tblSanPham": {
+        "id": "t_tblSanPham",
+        "name": "tblSanPham",
+        "comment": "Bảng sản phẩm",
+        "columnIds": [
+          "c_tblSanPham_fldMa_sp",
+          "c_tblSanPham_fldMa_hang",
+          "c_tblSanPham_fldMa_vach",
+          "c_tblSanPham_fldTen_sp",
+          "c_tblSanPham_fldMa_dm",
+          "c_tblSanPham_fldDon_vi",
+          "c_tblSanPham_fldGia_ban",
+          "c_tblSanPham_fldGia_nhap",
+          "c_tblSanPham_fldTon_kho",
+          "c_tblSanPham_fldTon_toi_thieu",
+          "c_tblSanPham_fldTrang_thai",
+          "c_tblSanPham_fldNgay_tao"
+        ],
+        "ui": {
+          "x": 1326.484375,
+          "y": 355
+        }
+      },
+      "t_tblKhachHang": {
+        "id": "t_tblKhachHang",
+        "name": "tblKhachHang",
+        "comment": "Bảng khách hàng",
+        "columnIds": [
+          "c_tblKhachHang_fldMa_kh",
+          "c_tblKhachHang_fldMa_the",
+          "c_tblKhachHang_fldHo_ten",
+          "c_tblKhachHang_fldSdt",
+          "c_tblKhachHang_fldDia_chi",
+          "c_tblKhachHang_fldDiem_tich_luy",
+          "c_tblKhachHang_fldNgay_tao"
+        ],
+        "ui": {
+          "x": 40,
+          "y": 310
+        }
+      },
+      "t_tblHoaDon": {
+        "id": "t_tblHoaDon",
+        "name": "tblHoaDon",
+        "comment": "Bảng hóa đơn",
+        "columnIds": [
+          "c_tblHoaDon_fldMa_hd",
+          "c_tblHoaDon_fldSo_hd",
+          "c_tblHoaDon_fldMa_kh",
+          "c_tblHoaDon_fldMa_tk",
+          "c_tblHoaDon_fldNgay_lap",
+          "c_tblHoaDon_fldTong_tien",
+          "c_tblHoaDon_fldGiam_gia",
+          "c_tblHoaDon_fldKhach_tra",
+          "c_tblHoaDon_fldPhuong_thuc",
+          "c_tblHoaDon_fldTrang_thai",
+          "c_tblHoaDon_fldGhi_chu"
+        ],
+        "ui": {
+          "x": 40,
+          "y": 625
+        }
+      },
+      "t_tblChiTietHoaDon": {
+        "id": "t_tblChiTietHoaDon",
+        "name": "tblChiTietHoaDon",
+        "comment": "Bảng chi tiết hóa đơn",
+        "columnIds": [
+          "c_tblChiTietHoaDon_fldMa_hd",
+          "c_tblChiTietHoaDon_fldMa_sp",
+          "c_tblChiTietHoaDon_fldSo_luong",
+          "c_tblChiTietHoaDon_fldDon_gia",
+          "c_tblChiTietHoaDon_fldGia_von"
+        ],
+        "ui": {
+          "x": 40,
+          "y": 1032
+        }
+      },
+      "t_tblPhieuNhap": {
+        "id": "t_tblPhieuNhap",
+        "name": "tblPhieuNhap",
+        "comment": "Bảng phiếu nhập",
+        "columnIds": [
+          "c_tblPhieuNhap_fldMa_pn",
+          "c_tblPhieuNhap_fldSo_pn",
+          "c_tblPhieuNhap_fldMa_ncc",
+          "c_tblPhieuNhap_fldMa_tk",
+          "c_tblPhieuNhap_fldNgay_nhap",
+          "c_tblPhieuNhap_fldGhi_chu"
+        ],
+        "ui": {
+          "x": 2546.9453125,
+          "y": 332
+        }
+      },
+      "t_tblChiTietPhieuNhap": {
+        "id": "t_tblChiTietPhieuNhap",
+        "name": "tblChiTietPhieuNhap",
+        "comment": "Bảng chi tiết phiếu nhập",
+        "columnIds": [
+          "c_tblChiTietPhieuNhap_fldMa_pn",
+          "c_tblChiTietPhieuNhap_fldMa_sp",
+          "c_tblChiTietPhieuNhap_fldSo_luong",
+          "c_tblChiTietPhieuNhap_fldDon_gia"
+        ],
+        "ui": {
+          "x": 2546.9453125,
+          "y": 624
+        }
+      }
+    },
+    "tableColumnEntities": {
+      "c_tblTaiKhoan_fldMa_tk": {
+        "id": "c_tblTaiKhoan_fldMa_tk",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldMa_tk",
+        "comment": "Mã tài khoản (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblTaiKhoan_fldTen_dang_nhap": {
+        "id": "c_tblTaiKhoan_fldTen_dang_nhap",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldTen_dang_nhap",
+        "comment": "Tên đăng nhập (duy nhất)",
+        "dataType": "VARCHAR(50)",
+        "options": 12
+      },
+      "c_tblTaiKhoan_fldMat_khau": {
+        "id": "c_tblTaiKhoan_fldMat_khau",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldMat_khau",
+        "comment": "Mật khẩu đã băm SHA-256",
+        "dataType": "VARCHAR(64)",
+        "options": 8
+      },
+      "c_tblTaiKhoan_fldHo_ten": {
+        "id": "c_tblTaiKhoan_fldHo_ten",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldHo_ten",
+        "comment": "Họ tên nhân viên",
+        "dataType": "NVARCHAR(100)",
+        "options": 8
+      },
+      "c_tblTaiKhoan_fldVai_tro": {
+        "id": "c_tblTaiKhoan_fldVai_tro",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldVai_tro",
+        "comment": "Vai trò: ADMIN (chủ cửa hàng), THU_NGAN",
+        "dataType": "VARCHAR(10)",
+        "options": 8
+      },
+      "c_tblTaiKhoan_fldTrang_thai": {
+        "id": "c_tblTaiKhoan_fldTrang_thai",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldTrang_thai",
+        "comment": "1: hoạt động, 0: bị khóa",
+        "dataType": "BIT",
+        "default": "1",
+        "options": 8
+      },
+      "c_tblTaiKhoan_fldNgay_tao": {
+        "id": "c_tblTaiKhoan_fldNgay_tao",
+        "tableId": "t_tblTaiKhoan",
+        "name": "fldNgay_tao",
+        "comment": "Ngày tạo tài khoản",
+        "dataType": "DATETIME2(0)",
+        "default": "sysdatetime()",
+        "options": 8
+      },
+      "c_tblDanhMuc_fldMa_dm": {
+        "id": "c_tblDanhMuc_fldMa_dm",
+        "tableId": "t_tblDanhMuc",
+        "name": "fldMa_dm",
+        "comment": "Mã danh mục (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblDanhMuc_fldTen_dm": {
+        "id": "c_tblDanhMuc_fldTen_dm",
+        "tableId": "t_tblDanhMuc",
+        "name": "fldTen_dm",
+        "comment": "Tên danh mục (duy nhất)",
+        "dataType": "NVARCHAR(100)",
+        "options": 12
+      },
+      "c_tblDanhMuc_fldMo_ta": {
+        "id": "c_tblDanhMuc_fldMo_ta",
+        "tableId": "t_tblDanhMuc",
+        "name": "fldMo_ta",
+        "comment": "Mô tả nhóm hàng",
+        "dataType": "NVARCHAR(300)",
+        "options": 0
+      },
+      "c_tblNhaCungCap_fldMa_ncc": {
+        "id": "c_tblNhaCungCap_fldMa_ncc",
+        "tableId": "t_tblNhaCungCap",
+        "name": "fldMa_ncc",
+        "comment": "Mã nhà cung cấp (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblNhaCungCap_fldTen_ncc": {
+        "id": "c_tblNhaCungCap_fldTen_ncc",
+        "tableId": "t_tblNhaCungCap",
+        "name": "fldTen_ncc",
+        "comment": "Tên nhà cung cấp",
+        "dataType": "NVARCHAR(150)",
+        "options": 8
+      },
+      "c_tblNhaCungCap_fldNguoi_lien_he": {
+        "id": "c_tblNhaCungCap_fldNguoi_lien_he",
+        "tableId": "t_tblNhaCungCap",
+        "name": "fldNguoi_lien_he",
+        "comment": "Người liên hệ",
+        "dataType": "NVARCHAR(100)",
+        "options": 0
+      },
+      "c_tblNhaCungCap_fldSdt": {
+        "id": "c_tblNhaCungCap_fldSdt",
+        "tableId": "t_tblNhaCungCap",
+        "name": "fldSdt",
+        "comment": "Số điện thoại (duy nhất)",
+        "dataType": "VARCHAR(15)",
+        "options": 12
+      },
+      "c_tblNhaCungCap_fldDia_chi": {
+        "id": "c_tblNhaCungCap_fldDia_chi",
+        "tableId": "t_tblNhaCungCap",
+        "name": "fldDia_chi",
+        "comment": "Địa chỉ",
+        "dataType": "NVARCHAR(200)",
+        "options": 0
+      },
+      "c_tblNhaCungCap_fldTrang_thai": {
+        "id": "c_tblNhaCungCap_fldTrang_thai",
+        "tableId": "t_tblNhaCungCap",
+        "name": "fldTrang_thai",
+        "comment": "1: đang hợp tác, 0: ngừng hợp tác",
+        "dataType": "BIT",
+        "default": "1",
+        "options": 8
+      },
+      "c_tblSanPham_fldMa_sp": {
+        "id": "c_tblSanPham_fldMa_sp",
+        "tableId": "t_tblSanPham",
+        "name": "fldMa_sp",
+        "comment": "Mã sản phẩm (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblSanPham_fldMa_hang": {
+        "id": "c_tblSanPham_fldMa_hang",
+        "tableId": "t_tblSanPham",
+        "name": "fldMa_hang",
+        "comment": "Mã hàng, tự sinh dạng SP0001 [cột tính toán: 'SP'+right('0000'+CONVERT([varchar](10),[fldMa_sp]),(4))]",
+        "dataType": "VARCHAR(6)",
+        "options": 0
+      },
+      "c_tblSanPham_fldMa_vach": {
+        "id": "c_tblSanPham_fldMa_vach",
+        "tableId": "t_tblSanPham",
+        "name": "fldMa_vach",
+        "comment": "Mã vạch (không bắt buộc, có thì không trùng)",
+        "dataType": "VARCHAR(20)",
+        "options": 4
+      },
+      "c_tblSanPham_fldTen_sp": {
+        "id": "c_tblSanPham_fldTen_sp",
+        "tableId": "t_tblSanPham",
+        "name": "fldTen_sp",
+        "comment": "Tên sản phẩm",
+        "dataType": "NVARCHAR(150)",
+        "options": 8
+      },
+      "c_tblSanPham_fldMa_dm": {
+        "id": "c_tblSanPham_fldMa_dm",
+        "tableId": "t_tblSanPham",
+        "name": "fldMa_dm",
+        "comment": "Mã danh mục (khóa ngoại → tblDanhMuc)",
+        "dataType": "INT",
+        "options": 8
+      },
+      "c_tblSanPham_fldDon_vi": {
+        "id": "c_tblSanPham_fldDon_vi",
+        "tableId": "t_tblSanPham",
+        "name": "fldDon_vi",
+        "comment": "Đơn vị tính: gói, chai, hộp…",
+        "dataType": "NVARCHAR(20)",
+        "options": 8
+      },
+      "c_tblSanPham_fldGia_ban": {
+        "id": "c_tblSanPham_fldGia_ban",
+        "tableId": "t_tblSanPham",
+        "name": "fldGia_ban",
+        "comment": "Giá bán (VNĐ, ≥ 0)",
+        "dataType": "DECIMAL(12,0)",
+        "options": 8
+      },
+      "c_tblSanPham_fldGia_nhap": {
+        "id": "c_tblSanPham_fldGia_nhap",
+        "tableId": "t_tblSanPham",
+        "name": "fldGia_nhap",
+        "comment": "Giá nhập gần nhất (VNĐ)",
+        "dataType": "DECIMAL(12,0)",
+        "default": "0",
+        "options": 8
+      },
+      "c_tblSanPham_fldTon_kho": {
+        "id": "c_tblSanPham_fldTon_kho",
+        "tableId": "t_tblSanPham",
+        "name": "fldTon_kho",
+        "comment": "Số lượng tồn kho (≥ 0)",
+        "dataType": "INT",
+        "default": "0",
+        "options": 8
+      },
+      "c_tblSanPham_fldTon_toi_thieu": {
+        "id": "c_tblSanPham_fldTon_toi_thieu",
+        "tableId": "t_tblSanPham",
+        "name": "fldTon_toi_thieu",
+        "comment": "Mức tồn tối thiểu để cảnh báo sắp hết",
+        "dataType": "INT",
+        "default": "5",
+        "options": 8
+      },
+      "c_tblSanPham_fldTrang_thai": {
+        "id": "c_tblSanPham_fldTrang_thai",
+        "tableId": "t_tblSanPham",
+        "name": "fldTrang_thai",
+        "comment": "1: đang bán, 0: ngừng bán",
+        "dataType": "BIT",
+        "default": "1",
+        "options": 8
+      },
+      "c_tblSanPham_fldNgay_tao": {
+        "id": "c_tblSanPham_fldNgay_tao",
+        "tableId": "t_tblSanPham",
+        "name": "fldNgay_tao",
+        "comment": "Ngày thêm sản phẩm",
+        "dataType": "DATETIME2(0)",
+        "default": "sysdatetime()",
+        "options": 8
+      },
+      "c_tblKhachHang_fldMa_kh": {
+        "id": "c_tblKhachHang_fldMa_kh",
+        "tableId": "t_tblKhachHang",
+        "name": "fldMa_kh",
+        "comment": "Mã khách hàng (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblKhachHang_fldMa_the": {
+        "id": "c_tblKhachHang_fldMa_the",
+        "tableId": "t_tblKhachHang",
+        "name": "fldMa_the",
+        "comment": "Mã thẻ thành viên, tự sinh dạng KH0001 [cột tính toán: 'KH'+right('0000'+CONVERT([varchar](10),[fldMa_kh]),(4))]",
+        "dataType": "VARCHAR(6)",
+        "options": 0
+      },
+      "c_tblKhachHang_fldHo_ten": {
+        "id": "c_tblKhachHang_fldHo_ten",
+        "tableId": "t_tblKhachHang",
+        "name": "fldHo_ten",
+        "comment": "Họ và tên",
+        "dataType": "NVARCHAR(100)",
+        "options": 8
+      },
+      "c_tblKhachHang_fldSdt": {
+        "id": "c_tblKhachHang_fldSdt",
+        "tableId": "t_tblKhachHang",
+        "name": "fldSdt",
+        "comment": "Số điện thoại (duy nhất)",
+        "dataType": "VARCHAR(15)",
+        "options": 12
+      },
+      "c_tblKhachHang_fldDia_chi": {
+        "id": "c_tblKhachHang_fldDia_chi",
+        "tableId": "t_tblKhachHang",
+        "name": "fldDia_chi",
+        "comment": "Địa chỉ",
+        "dataType": "NVARCHAR(200)",
+        "options": 0
+      },
+      "c_tblKhachHang_fldDiem_tich_luy": {
+        "id": "c_tblKhachHang_fldDiem_tich_luy",
+        "tableId": "t_tblKhachHang",
+        "name": "fldDiem_tich_luy",
+        "comment": "Điểm tích lũy (1 điểm / 10.000 đ)",
+        "dataType": "INT",
+        "default": "0",
+        "options": 8
+      },
+      "c_tblKhachHang_fldNgay_tao": {
+        "id": "c_tblKhachHang_fldNgay_tao",
+        "tableId": "t_tblKhachHang",
+        "name": "fldNgay_tao",
+        "comment": "Ngày đăng ký thành viên",
+        "dataType": "DATETIME2(0)",
+        "default": "sysdatetime()",
+        "options": 8
+      },
+      "c_tblHoaDon_fldMa_hd": {
+        "id": "c_tblHoaDon_fldMa_hd",
+        "tableId": "t_tblHoaDon",
+        "name": "fldMa_hd",
+        "comment": "Mã hóa đơn (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblHoaDon_fldSo_hd": {
+        "id": "c_tblHoaDon_fldSo_hd",
+        "tableId": "t_tblHoaDon",
+        "name": "fldSo_hd",
+        "comment": "Số hóa đơn, tự sinh dạng HD000001 [cột tính toán: 'HD'+right('000000'+CONVERT([varchar](10),[fldMa_hd]),(6))]",
+        "dataType": "VARCHAR(8)",
+        "options": 0
+      },
+      "c_tblHoaDon_fldMa_kh": {
+        "id": "c_tblHoaDon_fldMa_kh",
+        "tableId": "t_tblHoaDon",
+        "name": "fldMa_kh",
+        "comment": "Mã khách hàng, trống nếu khách lẻ (khóa ngoại → tblKhachHang)",
+        "dataType": "INT",
+        "options": 0
+      },
+      "c_tblHoaDon_fldMa_tk": {
+        "id": "c_tblHoaDon_fldMa_tk",
+        "tableId": "t_tblHoaDon",
+        "name": "fldMa_tk",
+        "comment": "Thu ngân lập hóa đơn (khóa ngoại → tblTaiKhoan)",
+        "dataType": "INT",
+        "options": 8
+      },
+      "c_tblHoaDon_fldNgay_lap": {
+        "id": "c_tblHoaDon_fldNgay_lap",
+        "tableId": "t_tblHoaDon",
+        "name": "fldNgay_lap",
+        "comment": "Thời điểm lập hóa đơn",
+        "dataType": "DATETIME2(0)",
+        "default": "sysdatetime()",
+        "options": 8
+      },
+      "c_tblHoaDon_fldTong_tien": {
+        "id": "c_tblHoaDon_fldTong_tien",
+        "tableId": "t_tblHoaDon",
+        "name": "fldTong_tien",
+        "comment": "Tổng tiền hàng",
+        "dataType": "DECIMAL(12,0)",
+        "options": 8
+      },
+      "c_tblHoaDon_fldGiam_gia": {
+        "id": "c_tblHoaDon_fldGiam_gia",
+        "tableId": "t_tblHoaDon",
+        "name": "fldGiam_gia",
+        "comment": "Số tiền giảm giá (0 → tổng tiền)",
+        "dataType": "DECIMAL(12,0)",
+        "default": "0",
+        "options": 8
+      },
+      "c_tblHoaDon_fldKhach_tra": {
+        "id": "c_tblHoaDon_fldKhach_tra",
+        "tableId": "t_tblHoaDon",
+        "name": "fldKhach_tra",
+        "comment": "Tiền khách đưa (≥ tổng tiền - giảm giá)",
+        "dataType": "DECIMAL(12,0)",
+        "options": 8
+      },
+      "c_tblHoaDon_fldPhuong_thuc": {
+        "id": "c_tblHoaDon_fldPhuong_thuc",
+        "tableId": "t_tblHoaDon",
+        "name": "fldPhuong_thuc",
+        "comment": "TIEN_MAT, CHUYEN_KHOAN, THE",
+        "dataType": "VARCHAR(15)",
+        "options": 8
+      },
+      "c_tblHoaDon_fldTrang_thai": {
+        "id": "c_tblHoaDon_fldTrang_thai",
+        "tableId": "t_tblHoaDon",
+        "name": "fldTrang_thai",
+        "comment": "HOAN_THANH hoặc DA_HUY",
+        "dataType": "VARCHAR(12)",
+        "default": "'HOAN_THANH'",
+        "options": 8
+      },
+      "c_tblHoaDon_fldGhi_chu": {
+        "id": "c_tblHoaDon_fldGhi_chu",
+        "tableId": "t_tblHoaDon",
+        "name": "fldGhi_chu",
+        "comment": "Ghi chú, lý do hủy",
+        "dataType": "NVARCHAR(200)",
+        "options": 0
+      },
+      "c_tblChiTietHoaDon_fldMa_hd": {
+        "id": "c_tblChiTietHoaDon_fldMa_hd",
+        "tableId": "t_tblChiTietHoaDon",
+        "name": "fldMa_hd",
+        "comment": "Mã hóa đơn (khóa chính, khóa ngoại → tblHoaDon)",
+        "dataType": "INT",
+        "options": 10
+      },
+      "c_tblChiTietHoaDon_fldMa_sp": {
+        "id": "c_tblChiTietHoaDon_fldMa_sp",
+        "tableId": "t_tblChiTietHoaDon",
+        "name": "fldMa_sp",
+        "comment": "Mã sản phẩm (khóa chính, khóa ngoại → tblSanPham)",
+        "dataType": "INT",
+        "options": 10
+      },
+      "c_tblChiTietHoaDon_fldSo_luong": {
+        "id": "c_tblChiTietHoaDon_fldSo_luong",
+        "tableId": "t_tblChiTietHoaDon",
+        "name": "fldSo_luong",
+        "comment": "Số lượng bán (> 0)",
+        "dataType": "INT",
+        "options": 8
+      },
+      "c_tblChiTietHoaDon_fldDon_gia": {
+        "id": "c_tblChiTietHoaDon_fldDon_gia",
+        "tableId": "t_tblChiTietHoaDon",
+        "name": "fldDon_gia",
+        "comment": "Giá bán tại thời điểm bán",
+        "dataType": "DECIMAL(12,0)",
+        "options": 8
+      },
+      "c_tblChiTietHoaDon_fldGia_von": {
+        "id": "c_tblChiTietHoaDon_fldGia_von",
+        "tableId": "t_tblChiTietHoaDon",
+        "name": "fldGia_von",
+        "comment": "Giá nhập tại thời điểm bán (tính lãi gộp)",
+        "dataType": "DECIMAL(12,0)",
+        "options": 8
+      },
+      "c_tblPhieuNhap_fldMa_pn": {
+        "id": "c_tblPhieuNhap_fldMa_pn",
+        "tableId": "t_tblPhieuNhap",
+        "name": "fldMa_pn",
+        "comment": "Mã phiếu nhập (khóa chính, tự tăng)",
+        "dataType": "INT",
+        "options": 11
+      },
+      "c_tblPhieuNhap_fldSo_pn": {
+        "id": "c_tblPhieuNhap_fldSo_pn",
+        "tableId": "t_tblPhieuNhap",
+        "name": "fldSo_pn",
+        "comment": "Số phiếu, tự sinh dạng PN00001 [cột tính toán: 'PN'+right('00000'+CONVERT([varchar](10),[fldMa_pn]),(5))]",
+        "dataType": "VARCHAR(7)",
+        "options": 0
+      },
+      "c_tblPhieuNhap_fldMa_ncc": {
+        "id": "c_tblPhieuNhap_fldMa_ncc",
+        "tableId": "t_tblPhieuNhap",
+        "name": "fldMa_ncc",
+        "comment": "Mã nhà cung cấp (khóa ngoại → tblNhaCungCap)",
+        "dataType": "INT",
+        "options": 8
+      },
+      "c_tblPhieuNhap_fldMa_tk": {
+        "id": "c_tblPhieuNhap_fldMa_tk",
+        "tableId": "t_tblPhieuNhap",
+        "name": "fldMa_tk",
+        "comment": "Nhân viên nhập hàng (khóa ngoại → tblTaiKhoan)",
+        "dataType": "INT",
+        "options": 8
+      },
+      "c_tblPhieuNhap_fldNgay_nhap": {
+        "id": "c_tblPhieuNhap_fldNgay_nhap",
+        "tableId": "t_tblPhieuNhap",
+        "name": "fldNgay_nhap",
+        "comment": "Thời điểm nhập",
+        "dataType": "DATETIME2(0)",
+        "default": "sysdatetime()",
+        "options": 8
+      },
+      "c_tblPhieuNhap_fldGhi_chu": {
+        "id": "c_tblPhieuNhap_fldGhi_chu",
+        "tableId": "t_tblPhieuNhap",
+        "name": "fldGhi_chu",
+        "comment": "Ghi chú",
+        "dataType": "NVARCHAR(200)",
+        "options": 0
+      },
+      "c_tblChiTietPhieuNhap_fldMa_pn": {
+        "id": "c_tblChiTietPhieuNhap_fldMa_pn",
+        "tableId": "t_tblChiTietPhieuNhap",
+        "name": "fldMa_pn",
+        "comment": "Mã phiếu nhập (khóa chính, khóa ngoại → tblPhieuNhap)",
+        "dataType": "INT",
+        "options": 10
+      },
+      "c_tblChiTietPhieuNhap_fldMa_sp": {
+        "id": "c_tblChiTietPhieuNhap_fldMa_sp",
+        "tableId": "t_tblChiTietPhieuNhap",
+        "name": "fldMa_sp",
+        "comment": "Mã sản phẩm (khóa chính, khóa ngoại → tblSanPham)",
+        "dataType": "INT",
+        "options": 10
+      },
+      "c_tblChiTietPhieuNhap_fldSo_luong": {
+        "id": "c_tblChiTietPhieuNhap_fldSo_luong",
+        "tableId": "t_tblChiTietPhieuNhap",
+        "name": "fldSo_luong",
+        "comment": "Số lượng nhập (> 0)",
+        "dataType": "INT",
+        "options": 8
+      },
+      "c_tblChiTietPhieuNhap_fldDon_gia": {
+        "id": "c_tblChiTietPhieuNhap_fldDon_gia",
+        "tableId": "t_tblChiTietPhieuNhap",
+        "name": "fldDon_gia",
+        "comment": "Đơn giá nhập",
+        "dataType": "DECIMAL(12,0)",
+        "options": 8
+      }
+    },
+    "relationshipEntities": {
+      "r_FK_SanPham_DanhMuc": {
+        "id": "r_FK_SanPham_DanhMuc",
+        "relationshipType": 4,
+        "onDelete": 2,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblDanhMuc",
+          "columnIds": [
+            "c_tblDanhMuc_fldMa_dm"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblSanPham",
+          "columnIds": [
+            "c_tblSanPham_fldMa_dm"
+          ]
+        }
+      },
+      "r_FK_HoaDon_KhachHang": {
+        "id": "r_FK_HoaDon_KhachHang",
+        "relationshipType": 4,
+        "onDelete": 8,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblKhachHang",
+          "columnIds": [
+            "c_tblKhachHang_fldMa_kh"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblHoaDon",
+          "columnIds": [
+            "c_tblHoaDon_fldMa_kh"
+          ]
+        }
+      },
+      "r_FK_HoaDon_TaiKhoan": {
+        "id": "r_FK_HoaDon_TaiKhoan",
+        "relationshipType": 4,
+        "onDelete": 2,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblTaiKhoan",
+          "columnIds": [
+            "c_tblTaiKhoan_fldMa_tk"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblHoaDon",
+          "columnIds": [
+            "c_tblHoaDon_fldMa_tk"
+          ]
+        }
+      },
+      "r_FK_CTHD_HoaDon": {
+        "id": "r_FK_CTHD_HoaDon",
+        "relationshipType": 4,
+        "onDelete": 4,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblHoaDon",
+          "columnIds": [
+            "c_tblHoaDon_fldMa_hd"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblChiTietHoaDon",
+          "columnIds": [
+            "c_tblChiTietHoaDon_fldMa_hd"
+          ]
+        }
+      },
+      "r_FK_CTHD_SanPham": {
+        "id": "r_FK_CTHD_SanPham",
+        "relationshipType": 4,
+        "onDelete": 2,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblSanPham",
+          "columnIds": [
+            "c_tblSanPham_fldMa_sp"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblChiTietHoaDon",
+          "columnIds": [
+            "c_tblChiTietHoaDon_fldMa_sp"
+          ]
+        }
+      },
+      "r_FK_PhieuNhap_NCC": {
+        "id": "r_FK_PhieuNhap_NCC",
+        "relationshipType": 4,
+        "onDelete": 2,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblNhaCungCap",
+          "columnIds": [
+            "c_tblNhaCungCap_fldMa_ncc"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblPhieuNhap",
+          "columnIds": [
+            "c_tblPhieuNhap_fldMa_ncc"
+          ]
+        }
+      },
+      "r_FK_PhieuNhap_TaiKhoan": {
+        "id": "r_FK_PhieuNhap_TaiKhoan",
+        "relationshipType": 4,
+        "onDelete": 2,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblTaiKhoan",
+          "columnIds": [
+            "c_tblTaiKhoan_fldMa_tk"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblPhieuNhap",
+          "columnIds": [
+            "c_tblPhieuNhap_fldMa_tk"
+          ]
+        }
+      },
+      "r_FK_CTPN_PhieuNhap": {
+        "id": "r_FK_CTPN_PhieuNhap",
+        "relationshipType": 4,
+        "onDelete": 4,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblPhieuNhap",
+          "columnIds": [
+            "c_tblPhieuNhap_fldMa_pn"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblChiTietPhieuNhap",
+          "columnIds": [
+            "c_tblChiTietPhieuNhap_fldMa_pn"
+          ]
+        }
+      },
+      "r_FK_CTPN_SanPham": {
+        "id": "r_FK_CTPN_SanPham",
+        "relationshipType": 4,
+        "onDelete": 2,
+        "onUpdate": 2,
+        "start": {
+          "tableId": "t_tblSanPham",
+          "columnIds": [
+            "c_tblSanPham_fldMa_sp"
+          ]
+        },
+        "end": {
+          "tableId": "t_tblChiTietPhieuNhap",
+          "columnIds": [
+            "c_tblChiTietPhieuNhap_fldMa_sp"
+          ]
+        }
+      }
+    },
+    "indexEntities": {
+      "i_UX_SanPham_MaVach": {
+        "id": "i_UX_SanPham_MaVach",
+        "name": "UX_SanPham_MaVach",
+        "tableId": "t_tblSanPham",
+        "indexColumnIds": [
+          "ic_UX_SanPham_MaVach_fldMa_vach"
+        ],
+        "unique": true
+      },
+      "i_IX_SanPham_Ten": {
+        "id": "i_IX_SanPham_Ten",
+        "name": "IX_SanPham_Ten",
+        "tableId": "t_tblSanPham",
+        "indexColumnIds": [
+          "ic_IX_SanPham_Ten_fldTen_sp"
+        ],
+        "unique": false
+      },
+      "i_IX_HoaDon_NgayLap": {
+        "id": "i_IX_HoaDon_NgayLap",
+        "name": "IX_HoaDon_NgayLap",
+        "tableId": "t_tblHoaDon",
+        "indexColumnIds": [
+          "ic_IX_HoaDon_NgayLap_fldNgay_lap"
+        ],
+        "unique": false
+      },
+      "i_IX_PhieuNhap_Ngay": {
+        "id": "i_IX_PhieuNhap_Ngay",
+        "name": "IX_PhieuNhap_Ngay",
+        "tableId": "t_tblPhieuNhap",
+        "indexColumnIds": [
+          "ic_IX_PhieuNhap_Ngay_fldNgay_nhap"
+        ],
+        "unique": false
+      }
+    },
+    "indexColumnEntities": {
+      "ic_UX_SanPham_MaVach_fldMa_vach": {
+        "id": "ic_UX_SanPham_MaVach_fldMa_vach",
+        "indexId": "i_UX_SanPham_MaVach",
+        "columnId": "c_tblSanPham_fldMa_vach",
+        "orderType": 1
+      },
+      "ic_IX_SanPham_Ten_fldTen_sp": {
+        "id": "ic_IX_SanPham_Ten_fldTen_sp",
+        "indexId": "i_IX_SanPham_Ten",
+        "columnId": "c_tblSanPham_fldTen_sp",
+        "orderType": 1
+      },
+      "ic_IX_HoaDon_NgayLap_fldNgay_lap": {
+        "id": "ic_IX_HoaDon_NgayLap_fldNgay_lap",
+        "indexId": "i_IX_HoaDon_NgayLap",
+        "columnId": "c_tblHoaDon_fldNgay_lap",
+        "orderType": 1
+      },
+      "ic_IX_PhieuNhap_Ngay_fldNgay_nhap": {
+        "id": "ic_IX_PhieuNhap_Ngay_fldNgay_nhap",
+        "indexId": "i_IX_PhieuNhap_Ngay",
+        "columnId": "c_tblPhieuNhap_fldNgay_nhap",
+        "orderType": 1
+      }
+    },
+    "memoEntities": {
+      "m_ghi_chu": {
+        "id": "m_ghi_chu",
+        "value": "vwSanPham: Sản phẩm kèm tên danh mục và tình trạng tồn kho: NGUNG_BAN (đã ngừng bán), HET_HANG (tồn = 0), SAP_HET (tồn ≤ mức tối thiểu) hoặc CON_HANG.",
+        "ui": {
+          "x": 40,
+          "y": 40,
+          "width": 520,
+          "height": 160
+        }
+      }
+    }
+  }
+}
